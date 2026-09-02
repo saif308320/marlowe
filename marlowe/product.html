@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Book — Marlowe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="mast"><span>Brooklyn · Issue 09</span><button data-bag>Satchel <span data-count>0</span></button></div>
+  <header class="issue">
+    <h1>MARLOWE DEVICES</h1>
+    <p>Studio Book</p>
+    <button class="ham" id="ham">☰</button>
+  </header>
+  <nav class="issue-nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a class="now" href="product.html">Studio Book</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="pdp-mw">
+    <div class="stage">
+      <img class="hero" id="main" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=80" alt="Marlowe Studio Book">
+      <div class="th" id="th">
+        <img class="on" src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=400&q=80" data-f="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1600&q=80" alt="">
+        <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=400&q=80" data-f="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=1600&q=80" alt="">
+        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=400&q=80" data-f="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1600&q=80" alt="">
+        <img src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?auto=format&fit=crop&w=400&q=80" data-f="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?auto=format&fit=crop&w=1600&q=80" alt="">
+      </div>
+    </div>
+    <div class="buybox">
+      <div class="eyebrow">Cover machine</div>
+      <h1>Studio Book</h1>
+      <p style="color:var(--mute)">Factory-calibrated. Hardware encode. A keyboard that survives a 14-hour grade.</p>
+      <div class="live" id="price">$2,199</div>
+      <div class="opt"><span>Memory</span>
+        <button class="chip on" data-r="0">32GB</button>
+        <button class="chip" data-r="1">64GB +$400</button>
+      </div>
+      <div class="opt"><span>Storage</span>
+        <button class="chip on" data-s="0">1TB</button>
+        <button class="chip" data-s="1">2TB +$280</button>
+        <button class="chip" data-s="2">4TB +$720</button>
+      </div>
+      <div class="sans" style="margin:16px 0"><button class="linebtn" id="m">−</button> <span id="q">1</span> <button class="linebtn" id="p">+</button></div>
+      <button class="amber" id="add">Add to satchel</button>
+      <p class="toast" id="toast"></p>
+    </div>
+  </div>
+  <div class="frame" style="padding:56px 0">
+    <div class="eyebrow">Color accuracy</div>
+    <h2 style="font-size:32px;font-weight:400;margin-bottom:8px">Delta-E under 1.0. Shown, not claimed.</h2>
+    <p style="color:var(--mute);max-width:560px">Each Studio Book ships with a unique calibration report. The strip below is the factory patch set — Rec.709 through P3.</p>
+    <div class="color-demo" aria-label="Color accuracy patches">
+      <i style="background:#1a1a1a"></i>
+      <i style="background:#c4a574"></i>
+      <i style="background:#c9842a"></i>
+      <i style="background:#6b8f71"></i>
+      <i style="background:#f6f0e6"></i>
+    </div>
+    <table class="sp">
+      <tr><td>Display</td><td>16.2" Mini-LED, 120Hz, 1600 nits, 100% DCI-P3, ΔE &lt; 1</td></tr>
+      <tr><td>Processor</td><td>Marlowe Loom 16, hardware ProRes / H.265</td></tr>
+      <tr><td>Memory</td><td>32 or 64GB unified</td></tr>
+      <tr><td>Storage</td><td>1 / 2 / 4TB</td></tr>
+      <tr><td>I/O</td><td>SD Express, HDMI 2.1, 3× USB-C, Mag-power</td></tr>
+      <tr><td>Weight</td><td>1.72 kg</td></tr>
+    </table>
+    <div class="quote">“I stopped packing a reference monitor. That is not a small sentence.” — Elena Voss, colorist</div>
+    <div class="quote">“The SD slot is why I bought it. Everything else is why I kept it.” — Jonah Reed</div>
+  </div>
+  <footer class="mw"><div class="frame"><p>305 Creative Row, Brooklyn, NY 11201 · hello@marlowestudio.com · +1 718 555 0165</p></div></footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh sans"><strong>Satchel</strong><button class="linebtn" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df sans"><span id="dt">$0</span><a class="amber" href="cart.html">Review</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>
+    const ramA=[0,400], ssdA=[0,280,720];
+    let r=0,s=0,q=1;
+    function price(){return 2199+ramA[r]+ssdA[s];}
+    function paint(){document.getElementById("price").textContent=MW.money(price());}
+    document.querySelectorAll("[data-r]").forEach(b=>b.onclick=()=>{r=+b.dataset.r;document.querySelectorAll("[data-r]").forEach(x=>x.classList.toggle("on",x===b));paint();});
+    document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{s=+b.dataset.s;document.querySelectorAll("[data-s]").forEach(x=>x.classList.toggle("on",x===b));paint();});
+    document.getElementById("p").onclick=()=>{q++;document.getElementById("q").textContent=q;};
+    document.getElementById("m").onclick=()=>{q=Math.max(1,q-1);document.getElementById("q").textContent=q;};
+    document.getElementById("add").onclick=()=>{
+      MW.add({id:"studio",name:"Marlowe Studio Book",price:price(),img:MW.PRODUCTS.studio.img,qty:q,config:(r?"64GB":"32GB")+" / "+["1TB","2TB","4TB"][s]});
+      document.getElementById("toast").textContent="In the satchel.";
+      MW.openD();
+    };
+    document.querySelectorAll("#th img").forEach(i=>i.onclick=()=>{document.querySelectorAll("#th img").forEach(x=>x.classList.remove("on"));i.classList.add("on");document.getElementById("main").src=i.dataset.f;});
+  </script>
+</body>
+</html>

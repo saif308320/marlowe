@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satchel — Marlowe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="mast"><span>Brooklyn · Issue 09</span><button data-bag>Satchel <span data-count>0</span></button></div>
+  <header class="issue">
+    <h1>MARLOWE DEVICES</h1>
+    <p>Satchel</p>
+    <button class="ham" id="ham">☰</button>
+  </header>
+  <nav class="issue-nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="product.html">Studio Book</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="frame bag-list">
+    <h2 style="font-size:36px;font-weight:400">What is in the satchel.</h2>
+    <div id="list"></div>
+    <div style="margin-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <strong id="tot"></strong>
+      <a class="amber" href="checkout.html">Checkout</a>
+    </div>
+  </div>
+  <footer class="mw"><div class="frame"><p>305 Creative Row, Brooklyn, NY 11201 · hello@marlowestudio.com · +1 718 555 0165</p></div></footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh sans"><strong>Satchel</strong><button class="linebtn" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df sans"><span id="dt">$0</span><a class="amber" href="cart.html">Review</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>
+    window.renderCart=function(){
+      const list=document.getElementById("list"); const c=MW.load();
+      document.getElementById("tot").textContent="Total "+MW.money(MW.total());
+      if(!c.length){list.innerHTML="<p style='color:var(--mute);padding:32px 0'>Empty. <a href='shop.html'>Open the line</a>.</p>";return;}
+      list.innerHTML=c.map(i=>`<div class="row"><img src="${i.img}" alt=""><div><h3 style="font-weight:400">${i.name}</h3><p class="sans">${i.config}</p>
+        <button class="linebtn" data-q="${i.key}" data-d="-1">−</button> ${i.qty} <button class="linebtn" data-q="${i.key}" data-d="1">+</button></div>
+        <div>${MW.money(i.price*i.qty)}<br><button class="linebtn" data-rm="${i.key}">Remove</button></div></div>`).join("");
+      list.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>MW.remove(b.dataset.rm));
+      list.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{const it=MW.load().find(x=>x.key===b.dataset.q);MW.updateQty(b.dataset.q,it.qty+Number(b.dataset.d));});
+    };
+    document.addEventListener("DOMContentLoaded",()=>window.renderCart());
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Marlowe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="mast"><span>Brooklyn · Issue 09</span><button data-bag>Satchel <span data-count>0</span></button></div>
+  <header class="issue">
+    <h1>MARLOWE DEVICES</h1>
+    <p>Checkout</p>
+    <button class="ham" id="ham">☰</button>
+  </header>
+  <nav class="issue-nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="product.html">Studio Book</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="frame" style="padding-top:36px">
+    <div class="eyebrow">1 Address · 2 Card · 3 Confirm</div>
+    <h2 style="font-size:36px;font-weight:400;margin-bottom:24px">Close the book.</h2>
+  </div>
+  <div class="frame chk">
+    <form id="f">
+      <div id="a">
+        <label>Name</label><input required>
+        <label>Email</label><input type="email" required>
+        <label>Address</label><input required>
+        <label>City</label><input required>
+        <button type="button" class="amber" style="margin-top:16px" id="n1">Continue</button>
+      </div>
+      <div id="b" hidden>
+        <label>Name on card</label><input required>
+        <label>Number</label><input required>
+        <label>Expiry</label><input required>
+        <label>CVC</label><input required>
+        <button type="button" class="linebtn" id="b1">Back</button>
+        <button type="button" class="amber" id="n2">Review</button>
+      </div>
+      <div id="c" hidden>
+        <p>Ships from Creative Row in 3–7 days. Complimentary in the US.</p>
+        <button type="button" class="linebtn" id="b2">Back</button>
+        <button class="amber" type="submit">Place order</button>
+      </div>
+    </form>
+    <aside class="side sans" id="side"></aside>
+  </div>
+  <footer class="mw"><div class="frame"><p>305 Creative Row, Brooklyn, NY 11201 · hello@marlowestudio.com · +1 718 555 0165</p></div></footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh sans"><strong>Satchel</strong><button class="linebtn" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df sans"><span id="dt">$0</span><a class="amber" href="cart.html">Review</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById("side").innerHTML=MW.load().map(i=>`<p>${i.name} × ${i.qty} — ${MW.money(i.price*i.qty)}</p>`).join("")+`<p><strong>${MW.money(MW.total())}</strong></p>`;
+    const A=document.getElementById("a"),B=document.getElementById("b"),C=document.getElementById("c");
+    document.getElementById("n1").onclick=()=>{A.hidden=true;B.hidden=false;};
+    document.getElementById("n2").onclick=()=>{B.hidden=true;C.hidden=false;};
+    document.getElementById("b1").onclick=()=>{B.hidden=true;A.hidden=false;};
+    document.getElementById("b2").onclick=()=>{C.hidden=true;B.hidden=false;};
+    document.getElementById("f").onsubmit=e=>{
+      e.preventDefault();
+      if(!MW.load().length){location.href="shop.html";return;}
+      sessionStorage.setItem("marlowe_order",JSON.stringify({id:"MW-"+Math.random().toString(36).slice(2,7).toUpperCase(),total:MW.total(),items:MW.load()}));
+      MW.clear(); location.href="confirm.html";
+    };
+  </script>
+</body>
+</html>

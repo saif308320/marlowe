@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Row — Marlowe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="mast"><span>Brooklyn · Issue 09</span><button data-bag>Satchel <span data-count>0</span></button></div>
+  <header class="issue">
+    <h1>MARLOWE DEVICES</h1>
+    <p>Creative Row</p>
+    <button class="ham" id="ham">☰</button>
+  </header>
+  <nav class="issue-nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="product.html">Studio Book</a>
+    <a href="about.html">About</a>
+    <a href="support.html">Support</a>
+    <a class="now" href="contact.html">Contact</a>
+  </nav>
+  <div class="frame ct" style="padding-top:40px">
+    <form id="cf">
+      <div class="eyebrow">Write the house</div>
+      <h2 style="font-size:36px;font-weight:400;margin:8px 0 16px">A note, not a ticket.</h2>
+      <label>Name</label><input required>
+      <label>Email</label><input type="email" required>
+      <label>Note</label><textarea required rows="5"></textarea>
+      <button class="amber" style="margin-top:16px">Send</button>
+      <p class="toast" id="ok"></p>
+    </form>
+    <div class="bk">
+      <div>
+        <strong>Marlowe Devices</strong>
+        <p>305 Creative Row<br>Brooklyn, NY 11201, USA</p>
+        <p>hello@marlowestudio.com<br>+1 718 555 0165</p>
+      </div>
+    </div>
+  </div>
+  <footer class="mw"><div class="frame"><p>© 2026 Marlowe Devices.</p></div></footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh sans"><strong>Satchel</strong><button class="linebtn" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df sans"><span id="dt">$0</span><a class="amber" href="cart.html">Review</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>document.getElementById("cf").onsubmit=e=>{e.preventDefault();document.getElementById("ok").textContent="Received. The row replies within a day.";e.target.reset();};</script>
+</body>
+</html>

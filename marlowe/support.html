@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desk — Marlowe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="mast"><span>Brooklyn · Issue 09</span><button data-bag>Satchel <span data-count>0</span></button></div>
+  <header class="issue">
+    <h1>MARLOWE DEVICES</h1>
+    <p>The desk</p>
+    <button class="ham" id="ham">☰</button>
+  </header>
+  <nav class="issue-nav" id="nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="product.html">Studio Book</a>
+    <a href="about.html">About</a>
+    <a class="now" href="support.html">Support</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <div class="frame" style="padding:48px 0 90px;max-width:760px">
+    <h2 style="font-size:36px;font-weight:400;margin-bottom:20px">Questions from the suite.</h2>
+    <div class="faq">
+      <div class="open"><button>Do you recalibrate?</button><div class="a">Yes. Yearly recalibration in Brooklyn or by mail. Included for three years on Studio Book.</div></div>
+      <div><button>SD Express speed?</button><div class="a">UHS-II and SD Express. Dump a 256GB card while the timeline plays.</div></div>
+      <div><button>Warranty?</button><div class="a">Three years. Accidental is optional. We repair panels; we do not shrug.</div></div>
+      <div><button>Walk-in?</button><div class="a">Creative Row, weekdays 11–19. Bring the machine and a still you trust.</div></div>
+    </div>
+  </div>
+  <footer class="mw"><div class="frame"><p>305 Creative Row, Brooklyn, NY 11201 · hello@marlowestudio.com · +1 718 555 0165</p></div></footer>
+  <div class="shade" id="shade"></div>
+  <aside class="drawer" id="drawer">
+    <div class="dh sans"><strong>Satchel</strong><button class="linebtn" id="dclose">Close</button></div>
+    <div class="db" id="db"></div>
+    <div class="df sans"><span id="dt">$0</span><a class="amber" href="cart.html">Review</a></div>
+  </aside>
+  <script src="js/app.js"></script>
+  <script>document.querySelectorAll(".faq > div > button").forEach(b=>b.onclick=()=>b.parentElement.classList.toggle("open"));</script>
+</body>
+</html>
